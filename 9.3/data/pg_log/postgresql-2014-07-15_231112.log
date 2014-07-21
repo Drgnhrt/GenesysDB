@@ -1,0 +1,8 @@
+2014-07-15 23:11:12 PDT LOG:  database system was shut down at 2014-07-15 23:10:50 PDT
+2014-07-15 23:11:12 PDT LOG:  database system is ready to accept connections
+2014-07-15 23:11:12 PDT LOG:  autovacuum launcher started
+2014-07-15 23:18:27 PDT LOG:  received fast shutdown request
+2014-07-15 23:18:27 PDT LOG:  aborting any active transactions
+2014-07-15 23:18:27 PDT LOG:  autovacuum launcher shutting down
+2014-07-15 23:18:27 PDT LOG:  shutting down
+2014-07-15 23:18:27 PDT LOG:  database system is shut down

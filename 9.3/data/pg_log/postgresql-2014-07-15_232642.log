@@ -1,0 +1,6 @@
+2014-07-15 23:26:42 PDT LOG:  database system was interrupted; last known up at 2014-07-15 23:18:45 PDT
+2014-07-15 23:26:42 PDT LOG:  database system was not properly shut down; automatic recovery in progress
+2014-07-15 23:26:42 PDT LOG:  record with zero length at 0/177D178
+2014-07-15 23:26:42 PDT LOG:  redo is not required
+2014-07-15 23:26:42 PDT LOG:  database system is ready to accept connections
+2014-07-15 23:26:42 PDT LOG:  autovacuum launcher started

@@ -1,0 +1,182 @@
+2014-07-20 12:43:16 PDT ERROR:  syntax error at or near ")" at character 552
+2014-07-20 12:43:16 PDT STATEMENT:  CREATE TABLE members
+	(
+	   "Id" text, 
+	   "MemberId" integer, 
+	   "NameFirst" text, 
+	   "NameMiddle" text, 
+	   "NameLast" text, 
+	   "DateBirth" date, 
+	   "NumberPhone" integer, 
+	   "AddressHome" text, 
+	   "AddressEmail" text, 
+	   "Parent1NameFirst" text,
+	   "Parent2NameFirst" text,
+	   "Parent1NameLast" text,
+	   "Parent2NameLast" text,
+	   "Parent1Phone1" integer,
+	   "Parent1Phone2" integer,
+	   "Parent2Phone1" integer,
+	   "Parent2Phone2" integer,
+	   "EmergNameFirst" text,
+	   "EmergNameLast" text,
+	   "EmergPhone1" integer,
+	   "EmergPhone2" integer,
+	) 
+	WITH (
+	  OIDS = FALSE
+	);
+	ALTER TABLE members
+	  OWNER TO postgres;
+2014-07-20 14:07:57 PDT ERROR:  syntax error at or near ""CheckOutDateTime"" at character 81
+2014-07-20 14:07:57 PDT STATEMENT:  CREATE TABLE checklogs
+	(
+	   "CheckInId" integer, 
+	   "CheckInDateTime" text 
+	   "CheckOutDateTime" text 
+	) 
+	WITH (
+	  OIDS = FALSE
+	);
+	
+	
+2014-07-20 14:19:40 PDT ERROR:  invalid value for floating point option "n_distinct": default
+2014-07-20 14:19:40 PDT STATEMENT:  ALTER TABLE "Schools"
+	   ALTER COLUMN "SchoolID"
+	   SET (n_distinct=DEFAULT);
+	
+2014-07-20 15:20:59 PDT ERROR:  column "MemberId" of relation "members" already exists
+2014-07-20 15:20:59 PDT STATEMENT:  ALTER TABLE members RENAME "Id"  TO "MemberId";
+	ALTER TABLE members RENAME "MemberId"  TO "MemberId2";
+	ALTER TABLE members
+	  ADD CONSTRAINT "MemberID" PRIMARY KEY ("MemberId");
+	
+2014-07-20 15:21:08 PDT ERROR:  column "MemberId" of relation "members" already exists
+2014-07-20 15:21:08 PDT STATEMENT:  ALTER TABLE members RENAME "Id"  TO "MemberId";
+	ALTER TABLE members RENAME "MemberId"  TO "MemberId2";
+	ALTER TABLE members
+	  ADD CONSTRAINT "MemberID" PRIMARY KEY ("MemberId");
+	
+2014-07-20 15:21:36 PDT ERROR:  column "MemberId" of relation "members" already exists
+2014-07-20 15:21:36 PDT STATEMENT:  ALTER TABLE members RENAME "Id"  TO "MemberId";
+	ALTER TABLE members RENAME "MemberId"  TO "MemberId2";
+	ALTER TABLE members
+	  ADD CONSTRAINT "MemberID" PRIMARY KEY ("MemberId");
+	
+2014-07-20 15:21:45 PDT ERROR:  column "MemberId" named in key does not exist
+2014-07-20 15:21:45 PDT STATEMENT:  ALTER TABLE members RENAME "Id"  TO "IDID";
+	ALTER TABLE members RENAME "MemberId"  TO "MemberId2";
+	ALTER TABLE members
+	  ADD CONSTRAINT "MemberID" PRIMARY KEY ("MemberId");
+	
+2014-07-20 15:36:16 PDT ERROR:  syntax error at or near "(" at character 82
+2014-07-20 15:36:16 PDT STATEMENT:  INSERT INTO status(
+	            "StatusId", "Status")
+	    VALUES (1, "Good")
+		   (2, "Kicked Out")
+		   (3, "Suspended")
+		   (4, "Expelled");
+	
+2014-07-20 15:36:25 PDT ERROR:  column "Good" does not exist at character 70
+2014-07-20 15:36:25 PDT STATEMENT:  INSERT INTO status(
+	            "StatusId", "Status")
+	    VALUES (1, "Good"),
+		   (2, "Kicked Out"),
+		   (3, "Suspended"),
+		   (4, "Expelled");
+	
+2014-07-20 15:40:57 PDT ERROR:  duplicate key value violates unique constraint "StatusID"
+2014-07-20 15:40:57 PDT DETAIL:  Key ("StatusId")=(1) already exists.
+2014-07-20 15:40:57 PDT STATEMENT:  INSERT INTO status("StatusId", "Status") VALUES 
+	    (1, 'Good'),
+	    (1, 'Kicked Out'),
+	    (3, 'Suspended'),
+	    (4, 'Expelled');
+2014-07-20 15:42:01 PDT ERROR:  duplicate key value violates unique constraint "StatusID"
+2014-07-20 15:42:01 PDT DETAIL:  Key ("StatusId")=(1) already exists.
+2014-07-20 15:42:01 PDT STATEMENT:  INSERT INTO status("StatusId", "Status") VALUES 
+	    (1, 'Good'),
+	    (1, 'Kicked Out'),
+	    (3, 'Suspended'),
+	    (4, 'Expelled');
+2014-07-20 15:51:47 PDT ERROR:  there is no unique constraint matching given keys for referenced table "status"
+2014-07-20 15:51:47 PDT STATEMENT:  ALTER TABLE members
+	  ADD CONSTRAINT "Status" FOREIGN KEY ("Status") REFERENCES status ("Status") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 15:54:58 PDT ERROR:  there is no unique constraint matching given keys for referenced table "status"
+2014-07-20 15:54:58 PDT STATEMENT:  ALTER TABLE members
+	  ADD CONSTRAINT "Status" FOREIGN KEY ("Status") REFERENCES status ("Status") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 15:55:20 PDT ERROR:  foreign key constraint "Status" cannot be implemented
+2014-07-20 15:55:20 PDT DETAIL:  Key columns "Status" and "StatusId" are of incompatible types: character varying and integer.
+2014-07-20 15:55:20 PDT STATEMENT:  ALTER TABLE members
+	  ADD CONSTRAINT "Status" FOREIGN KEY ("Status") REFERENCES status ("StatusId") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 15:56:13 PDT ERROR:  foreign key constraint "Status" cannot be implemented
+2014-07-20 15:56:13 PDT DETAIL:  Key columns "Status" and "StatusId" are of incompatible types: text and integer.
+2014-07-20 15:56:13 PDT STATEMENT:  ALTER TABLE members
+	   ALTER COLUMN "Status" TYPE text;
+	ALTER TABLE members
+	  ADD CONSTRAINT "Status" FOREIGN KEY ("Status") REFERENCES status ("StatusId") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 15:56:43 PDT ERROR:  foreign key constraint "members_Status_fkey" cannot be implemented
+2014-07-20 15:56:43 PDT DETAIL:  Key columns "Status" and "StatusId" are of incompatible types: text and integer.
+2014-07-20 15:56:43 PDT STATEMENT:  ALTER TABLE members
+	  ADD FOREIGN KEY ("Status") REFERENCES status ("StatusId") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 15:58:29 PDT ERROR:  there is no unique constraint matching given keys for referenced table "status"
+2014-07-20 15:58:29 PDT STATEMENT:  ALTER TABLE members
+	  ADD COLUMN "Status2" text;
+	ALTER TABLE members
+	  ADD CONSTRAINT "Status2" FOREIGN KEY ("Status2") REFERENCES status ("Status") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 16:03:36 PDT ERROR:  column "NotNull2" contains null values
+2014-07-20 16:03:36 PDT STATEMENT:  ALTER TABLE status
+	  ADD COLUMN "NotNull2" text NOT NULL;
+	
+2014-07-20 16:05:23 PDT ERROR:  constraint "Status" of relation "members" does not exist
+2014-07-20 16:05:23 PDT STATEMENT:  ALTER TABLE members
+	  DROP COLUMN "Status";
+	ALTER TABLE members
+	  ADD COLUMN "Status" text;
+	ALTER TABLE members
+	  DROP CONSTRAINT "Status";
+	ALTER TABLE members
+	  ADD CONSTRAINT "Status" FOREIGN KEY ("Status") REFERENCES status ("Status") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 16:07:00 PDT ERROR:  constraint "Status" of relation "members" does not exist
+2014-07-20 16:07:00 PDT STATEMENT:  ALTER TABLE members
+	  DROP COLUMN "Status";
+	ALTER TABLE members
+	  ADD COLUMN "Status" text;
+	ALTER TABLE members
+	  DROP CONSTRAINT "Status";
+	
+2014-07-20 16:07:12 PDT ERROR:  constraint "Status" of relation "members" does not exist
+2014-07-20 16:07:12 PDT STATEMENT:  ALTER TABLE members
+	  DROP COLUMN "Status";
+	ALTER TABLE members
+	  ADD COLUMN "Status" text;
+	ALTER TABLE members
+	  DROP CONSTRAINT "Status";
+	
+2014-07-20 16:08:18 PDT ERROR:  there is no unique constraint matching given keys for referenced table "status"
+2014-07-20 16:08:18 PDT STATEMENT:  ALTER TABLE members
+	  ADD CONSTRAINT "Status" FOREIGN KEY ("Status") REFERENCES status ("Status") ON UPDATE NO ACTION ON DELETE NO ACTION;
+	
+2014-07-20 16:10:42 PDT ERROR:  syntax error at or near "UNIQUE" at character 59
+2014-07-20 16:10:42 PDT STATEMENT:  ALTER TABLE status
+	  ADD CONSTRAINT "Unique" CHECK (Satus UNIQUE);
+	
+2014-07-20 16:11:15 PDT ERROR:  syntax error at or near "Unique" at character 60
+2014-07-20 16:11:15 PDT STATEMENT:  ALTER TABLE status
+	  ADD CONSTRAINT "Unique" CHECK (Status Unique);
+	
+2014-07-20 16:11:25 PDT ERROR:  syntax error at or near "Unique" at character 60
+2014-07-20 16:11:25 PDT STATEMENT:  ALTER TABLE status
+	  ADD CONSTRAINT "Unique" CHECK (Status Unique);
+	
+2014-07-20 16:13:03 PDT ERROR:  syntax error at or near "unique" at character 63
+2014-07-20 16:13:03 PDT STATEMENT:  ALTER TABLE status
+	  ADD CONSTRAINT "Unique" CHECK (status is unique);
+	
